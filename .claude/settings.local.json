@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p /Users/aahil/Documents/Code/Website/images)",
+      "Bash(cp '/Users/aahil/Documents/Code/Old Code/WebsiteV3/Images/sunny.png' /Users/aahil/Documents/Code/Website/images/sun.png)",
+      "Bash(cp '/Users/aahil/Documents/Code/Old Code/WebsiteV3/Images/moon.png' /Users/aahil/Documents/Code/Website/images/moon.png)"
+    ]
+  }
+}
