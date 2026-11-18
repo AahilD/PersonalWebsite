@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="100%" height="100%">
+  <defs>
+    <filter id="eye-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.5" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Top Wing Plate -->
+  <polygon points="24,3 31,16 24,20 17,16" fill="#F4F4F5" />
+  
+  <!-- Bottom Wing Plate -->
+  <polygon points="24,45 17,32 24,28 31,32" fill="#F4F4F5" />
+  
+  <!-- Left Wing Plate -->
+  <polygon points="3,24 16,17 20,24 16,31" fill="#F4F4F5" />
+  
+  <!-- Right Wing Plate -->
+  <polygon points="45,24 32,31 28,24 32,17" fill="#F4F4F5" />
+  
+  <!-- Central Core Hexagon -->
+  <polygon points="24,14 31.5,18.5 31.5,29.5 24,34 16.5,29.5 16.5,18.5" fill="#E4E4E7" />
+  
+  <!-- Inner Ring / Iris -->
+  <circle cx="24" cy="24" r="5.5" fill="#141416" />
+  
+  <!-- Glowing Ember Eye with Glow Filter -->
+  <circle cx="24" cy="24" r="3.2" fill="#F88436" filter="url(#eye-glow)" />
+</svg>

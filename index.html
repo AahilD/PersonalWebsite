@@ -3,78 +3,287 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Name | Personal Website</title>
+  <meta name="color-scheme" content="light dark">
+  <title>Aahil Dawoodani</title>
+  <meta name="description" content="Aahil Dawoodani, software and data engineer in Calgary.">
+  <meta property="og:title" content="Aahil Dawoodani">
+  <meta property="og:description" content="Software and data engineer in Calgary.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="images/icons/ghost-toggle-light.svg" type="image/svg+xml">
+
+  <!-- Apply the saved (or system) theme before first paint, so dark mode never flashes white. -->
+  <script>
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') {
+        t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      document.documentElement.setAttribute('data-theme', t);
+      document.documentElement.classList.add('js');
+    })();
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Jost:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-top">
-      <div class="title-row">
-        <h1>Your Name</h1>
-        <button id="themeToggle" class="theme-switch" aria-label="Toggle theme">
-          <img src="images/sun.png" alt="Toggle theme" id="themeIcon" />
-        </button>
-      </div>
-      <p class="tagline">Building digital experiences with thoughtful, accessible design.</p>
-      <div class="contact-list">
-        <a href="mailto:you@example.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-        <a href="https://github.com/yourusername" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="https://instagram.com/yourusername" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://youtube.com/yourusername" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-        <a href="https://www.strava.com/athletes/yourusername" target="_blank" rel="noopener" aria-label="Strava"><i class="fab fa-strava"></i></a>
-      </div>
-    </div>
+  <canvas id="starfield" aria-hidden="true"></canvas>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===== NAV ===== -->
+  <header class="topbar">
+    <div class="stripes" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <nav class="nav wrap" aria-label="Primary">
+      <a class="monogram" href="#top" aria-label="Back to top">
+        <span class="monogram-mark">AD</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about"><span class="num">01</span>About</a></li>
+        <li><a href="#projects"><span class="num">02</span>Projects</a></li>
+        <li><a href="#photos"><span class="num">03</span>Photos</a></li>
+        <li><a href="#contact"><span class="num">04</span>Contact</a></li>
+      </ul>
+      <button id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to dark mode">
+        <!-- Moon shows in light mode, sun in dark mode -->
+        <svg class="icon-moon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+          <path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2Z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+          <g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4.2"/>
+            <path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/>
+          </g>
+        </svg>
+      </button>
+    </nav>
   </header>
 
-  <main class="container">
-    <div class="split-layout">
-      <section id="about" class="section">
-        <h2>About & Intro</h2>
-        <p>I build intuitive web experiences with clean UI, accessible interactions, and maintainable code. I enjoy collaborating on open source and making tools that help others.</p>
-        <ul class="about-list">
-          <li>🚀 UI/UX engineering</li>
-          <li>🛡️ Accessibility-first design</li>
-          <li>⚡ Performance optimization</li>
-        </ul>
-      </section>
+  <main id="main">
+    <!-- ===== HERO ===== -->
+    <section class="hero wrap" id="top">
+      <p class="hud-line reveal">
+        <span class="dot" aria-hidden="true"></span>
+        Calgary, Alberta
+      </p>
 
-      <section id="projects" class="section">
-        <h2>Selected Work</h2>
-        <div class="card-grid">
-          <article class="card neon-card">
-            <h3>Project 1</h3>
-            <p>Short description of a project you're proud of.</p>
-            <a href="#" target="_blank" rel="noopener">View details</a>
-          </article>
-          <article class="card neon-card">
-            <h3>Project 2</h3>
-            <p>Short description for another project.</p>
-            <a href="#" target="_blank" rel="noopener">View details</a>
-          </article>
+      <h1 class="hero-name reveal">Aahil<br>Dawoodani</h1>
+
+      <div class="rule-title reveal" aria-hidden="true"><span></span><em>&#9670;</em><span></span></div>
+
+      <p class="hero-role reveal">Software &amp; Data Engineer</p>
+
+      <ul class="socials reveal" aria-label="Social links">
+        <li><a href="#contact" class="js-email" aria-label="Email"><i class="fas fa-envelope"></i></a></li>
+        <li><a href="https://github.com/AahilD" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a></li>
+        <li><a href="https://www.linkedin.com/in/aahildawoodani/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+        <li><a href="https://www.instagram.com/aahild_/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+        <li><a href="https://www.youtube.com/@aahildawoodaniyt" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a></li>
+        <li><a href="https://www.strava.com/athletes/110354139" target="_blank" rel="noopener" aria-label="Strava"><i class="fab fa-strava"></i></a></li>
+      </ul>
+    </section>
+
+    <!-- ===== 01 ABOUT ===== -->
+    <section class="section wrap" id="about">
+      <header class="chapter reveal">
+        <span class="chapter-num">Chapter 01</span>
+        <h2>About</h2>
+      </header>
+
+      <div class="about-copy reveal">
+        <p class="about-lead">
+          Hi, I'm Aahil. I live in Calgary.
+        </p>
+        <p>
+          I spend most of my free time either out in the mountains or online, and I take
+          a lot of photos along the way. A bunch of them are down below.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== 02 PROJECTS ===== -->
+    <section class="section wrap" id="projects">
+      <header class="chapter reveal">
+        <span class="chapter-num">Chapter 02</span>
+        <h2>Projects</h2>
+      </header>
+
+      <div class="projects">
+      <!-- Haven -->
+      <article class="project project-haven reveal">
+        <div class="project-banner">
+          <div class="banner-stripes" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="project-id">
+            <span class="project-glyph" aria-hidden="true"><img class="project-ghost js-ghost" src="images/icons/ghost-toggle-light.svg" alt="" width="26" height="26"></span>
+            <div>
+              <span class="project-kicker">Android app</span>
+              <h3>Haven</h3>
+            </div>
+          </div>
+          <span class="status status-live"><span class="dot" aria-hidden="true"></span>Working</span>
         </div>
-      </section>
-    </div>
 
-    <section id="photos" class="section photo-section">
-      <h2>Photos</h2>
-      <div class="photo-grid">
-        <img src="https://placekitten.com/400/300" alt="Sample photo 1" class="photo-item" />
-        <img src="https://placekitten.com/401/300" alt="Sample photo 2" class="photo-item" />
-        <img src="https://placekitten.com/402/300" alt="Sample photo 3" class="photo-item" />
-        <img src="https://placekitten.com/403/300" alt="Sample photo 4" class="photo-item" />
+        <div class="project-body">
+          <p class="project-summary">
+            My phone's home screen. Weather, news, stocks, my calendar and to-do list in one
+            place, plus an assistant called Ghost that runs entirely on the phone.
+          </p>
+
+          <ul class="tags" aria-label="Built with">
+            <li>Kotlin</li><li>Jetpack Compose</li><li>Gemma 4</li><li>LiteRT-LM</li><li>Google APIs</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- GhostLLM -->
+      <article class="project project-ghostllm reveal">
+        <div class="project-banner">
+          <div class="banner-stripes" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="project-id">
+            <span class="project-glyph" aria-hidden="true">&gt;_</span>
+            <div>
+              <span class="project-kicker">Mac command line</span>
+              <h3>GhostLLM</h3>
+            </div>
+          </div>
+          <span class="status status-wip"><span class="dot" aria-hidden="true"></span>In progress</span>
+        </div>
+
+        <div class="project-body">
+          <p class="project-summary">
+            A coding assistant for the terminal on my MacBook, like Claude Code, except the
+            model runs on the laptop so nothing leaves the machine.
+          </p>
+
+          <ul class="tags" aria-label="Built with">
+            <li>Python</li><li>MLX</li><li>Gemma 4</li><li>SearXNG</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- StatGarden -->
+      <article class="project project-statgarden reveal">
+        <div class="project-banner">
+          <div class="banner-stripes" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="project-id">
+            <span class="project-glyph" aria-hidden="true"><i class="fas fa-basketball"></i></span>
+            <div>
+              <span class="project-kicker">Web app</span>
+              <h3>StatGarden</h3>
+            </div>
+          </div>
+          <span class="status status-planned"><span class="dot" aria-hidden="true"></span>Planning</span>
+        </div>
+
+        <div class="project-body">
+          <p class="project-summary">
+            A website for exploring NBA stats. Build your own tables and charts for any player
+            or team, and share what you find.
+          </p>
+
+          <ul class="tags" aria-label="Built with">
+            <li>Python</li><li>DuckDB</li><li>FastAPI</li><li>Next.js</li><li>TypeScript</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Photo book -->
+      <article class="project project-photobook reveal">
+        <div class="project-banner">
+          <div class="banner-stripes" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="project-id">
+            <span class="project-glyph" aria-hidden="true"><i class="fas fa-camera"></i></span>
+            <div>
+              <span class="project-kicker">Photo book &middot; 2027</span>
+              <h3>A Year in Frames</h3>
+            </div>
+          </div>
+          <span class="status status-planned"><span class="dot" aria-hidden="true"></span>Starts 2027</span>
+        </div>
+
+        <div class="project-body">
+          <p class="project-summary">
+            A coffee table book of photos from one year, taken by me and a few friends.
+          </p>
+
+          <ul class="tags" aria-label="Made with">
+            <li>Photography</li><li>Print</li>
+          </ul>
+        </div>
+      </article>
+      </div>
+    </section>
+
+    <!-- ===== 03 PHOTOS ===== -->
+    <section class="section wrap" id="photos">
+      <header class="chapter reveal">
+        <span class="chapter-num">Chapter 03</span>
+        <h2>Photos</h2>
+      </header>
+
+      <div class="table-controls reveal">
+        <p class="table-hint" id="tableHint">Drag them around. Click one to look closer.</p>
+        <div class="table-buttons">
+          <button type="button" class="chip" id="shuffleBtn">
+            <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Shuffle
+          </button>
+          <button type="button" class="chip" id="tidyBtn" aria-pressed="false">
+            <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/></svg>
+            <span>Tidy up</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="photo-table reveal" id="photoTable" aria-label="Photos"></div>
+    </section>
+
+    <!-- ===== 04 CONTACT ===== -->
+    <section class="section wrap" id="contact">
+      <header class="chapter reveal">
+        <span class="chapter-num">Chapter 04</span>
+        <h2>Contact</h2>
+      </header>
+
+      <div class="contact reveal">
+        <div class="contact-actions">
+          <a class="btn btn-primary js-email" href="#contact"><i class="fas fa-envelope" aria-hidden="true"></i>Email me</a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/aahildawoodani/" target="_blank" rel="noopener"><i class="fab fa-linkedin" aria-hidden="true"></i>LinkedIn</a>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <p>© <span id="year"></span> Your Name</p>
+    <div class="stripes" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="footer-inner wrap">
+      <span class="mono">&copy; <span id="year">2026</span> Aahil Dawoodani</span>
+      <span class="mono coords">51.0447&deg; N &middot; 114.0719&deg; W</span>
+      <span class="konami-hint" aria-hidden="true">&uarr;&uarr;&darr;&darr;&larr;&rarr;&larr;&rarr;ba</span>
+    </div>
   </footer>
 
-  <script src="script.js"></script>
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+    <button type="button" class="lb-btn lb-close" id="lbClose" aria-label="Close">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <button type="button" class="lb-btn lb-prev" id="lbPrev" aria-label="Previous photo">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <figure class="lb-figure">
+      <img id="lbImg" alt="">
+      <figcaption id="lbCaption" class="mono"></figcaption>
+    </figure>
+    <button type="button" class="lb-btn lb-next" id="lbNext" aria-label="Next photo">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js" defer></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
