@@ -245,10 +245,10 @@ function initPhotoTable() {
       table.appendChild(card);
       return card;
     });
-    layout(true);
+    layout();
   }
 
-  function layout(fresh = false) {
+  function layout() {
     if (!cards.length) return;
     table.classList.toggle('is-pile', isPile());
     table.classList.toggle('is-tidy', tidy);
@@ -257,7 +257,7 @@ function initPhotoTable() {
     if (tidy) return layoutTidy();
     table.style.height = '';
     if (isPile()) return layoutPile();
-    layoutScatter(fresh);
+    layoutScatter();
   }
 
   function layoutScatter() {

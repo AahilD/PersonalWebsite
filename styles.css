@@ -271,10 +271,7 @@ main,
   border-radius: var(--r-sm);
   transform: rotate(45deg);
   transition: background-color var(--t-fast) ease, color var(--t-fast) ease;
-}
-
-.monogram-mark {
-  /* counter-rotate the letters inside the diamond */
+  /* The real letters are hidden; ::after draws them counter-rotated inside the diamond. */
   color: transparent;
   position: relative;
 }
@@ -303,9 +300,6 @@ main,
   gap: clamp(0.75rem, 2.4vw, 1.9rem);
   overflow-x: auto;
   scrollbar-width: none;
-}
-
-.nav-links {
   -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent);
   mask-image: linear-gradient(90deg, #000 85%, transparent);
 }
@@ -369,6 +363,7 @@ main,
 }
 
 .theme-toggle {
+  position: relative;
   flex-shrink: 0;
   display: inline-grid;
   place-items: center;
@@ -379,12 +374,8 @@ main,
   border: 1px solid transparent;
   border-radius: var(--r-btn);
   cursor: pointer;
-  transition: border-color var(--t-fast) ease, transform 0.3s var(--ease-spring);
-}
-
-.theme-toggle {
-  position: relative;
   color: var(--text);
+  transition: border-color var(--t-fast) ease, color var(--t-fast) ease;
 }
 
 .theme-toggle svg {
@@ -617,11 +608,6 @@ main,
   background: linear-gradient(90deg, var(--red) 0 33%, var(--orange) 33% 66%, var(--yellow) 66%);
 }
 
-.chapter-sub {
-  margin-top: 1rem;
-  color: var(--text-2);
-}
-
 /* ===== ABOUT ===== */
 .about-copy {
   max-width: 560px;
@@ -658,7 +644,6 @@ main,
 .project {
   --p-bg: var(--surface-2);
   --p-ink: var(--text);
-  --p-accent: var(--orange);
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--r-card);
@@ -694,25 +679,21 @@ main,
 .project-haven {
   --p-bg: var(--haven-bg);
   --p-ink: var(--haven-ink);
-  --p-accent: var(--teal);
 }
 
 .project-ghostllm {
   --p-bg: var(--ghostllm-bg);
   --p-ink: var(--ghostllm-ink);
-  --p-accent: var(--lavender);
 }
 
 .project-statgarden {
   --p-bg: var(--statgarden-bg);
   --p-ink: var(--statgarden-ink);
-  --p-accent: var(--forest);
 }
 
 .project-photobook {
   --p-bg: var(--photobook-bg);
   --p-ink: var(--photobook-ink);
-  --p-accent: var(--mocha);
 }
 
 .project-banner {
@@ -927,11 +908,6 @@ main,
   color: var(--bg);
 }
 
-/* Slightly smaller cards when tidy, so 15 photos sit as a 5 × 3 grid. */
-.photo-table.is-tidy {
-  --card-w: 168px;
-}
-
 .photo-table {
   --card-w: 200px;
   position: relative;
@@ -945,6 +921,11 @@ main,
   overflow: hidden;
   transition: height 0.5s var(--ease-spring);
   touch-action: pan-y;
+}
+
+/* Slightly smaller cards when tidy, so 15 photos sit as a 5 × 3 grid. */
+.photo-table.is-tidy {
+  --card-w: 168px;
 }
 
 .polaroid {
@@ -1057,7 +1038,6 @@ main,
   max-height: calc(100svh - 7rem);
   object-fit: contain;
   border: 8px solid #fdfcf8;
-  border-bottom-width: 8px;
   border-radius: 3px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
 }
@@ -1122,6 +1102,7 @@ main,
 }
 
 .konami-hint {
+  font-family: var(--font-mono);
   font-size: 0.62rem;
   letter-spacing: 0.15em;
   color: var(--border-strong);

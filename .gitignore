@@ -2,3 +2,6 @@
 # Full-size originals (~277 MB). The site uses the compressed copies in images/photos/.
 images/Website Photos Album/
 images/Theme Toggle/
+
+# Local Claude Code settings
+.claude/
