@@ -50,7 +50,7 @@
   --wrap: 1080px;
 
   /* Type */
-  --font-sans: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-sans: Roboto, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-display: Jost, Futura, "Century Gothic", var(--font-sans);
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
